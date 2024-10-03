@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= isLogin ? 'Login Page' : 'Sign Up Page' %></title>
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <header>
+      <h2><a href="/">Blog Application</a></h2>
+      <nav>
+        <% if (isLogin) { %>
+          <a href="/signup">Sign Up</a>
+        <% } else { %>
+          <a href="/login">Log In</a>
+        <% } %>
+      </nav>
+    </header>
+
+    <main>
+      <form action="<%= isLogin ? '/login' : '/signup' %>" method="POST">
+        <h2><%= isLogin ? 'Sign In' : 'Register Now' %></h2>
+        <fieldset style="display: flex; justify-content: center; flex-direction: column">
+          <legend><%= isLogin ? 'Sign In' : 'Create An Account' %></legend>
+
+          <!-- Error Display Section -->
+          <% if (!isLogin) { %>
+            <!-- Contact No field for sign-up -->
+            <label for="username"><small>Contact No.</small></label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              autocomplete="off"
+              required
+            />
+          <% } %>
+
+          <label for="username"><small>Username</small></label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            autocomplete="off"
+            required
+          />
+
+          <label for="password"><small>Password</small></label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            autocomplete="off"
+            required
+          />
+          
+          <br />
+
+          <button type="submit"> <%= isLogin ? 'Login' : 'Register Now' %></button>
+        </fieldset>
+      </form>
+    </main>
+
+    <footer>
+      <small>&copy; Our Cookies Policy Generator can create a customized Cookies Policy to help your compliance with ePrivacy Directive and GDPR.</small>
+    </footer>
+  </body>
+</html>
