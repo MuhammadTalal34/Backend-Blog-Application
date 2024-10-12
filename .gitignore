@@ -1,0 +1,37 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+
+# Build output
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+.cache/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Miscellaneous
+coverage/
+*.tgz
+
+# Ignore secret generation script
+generateSecret.js

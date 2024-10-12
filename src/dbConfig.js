@@ -1,20 +1,15 @@
-const { default: mongoose } = require("mongoose");
-
-mongoose
-const url = 'mongodb://localhost:27017/blog-app';
-const options = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-};
-
+const mongoose = require("mongoose");
+require('dotenv').config()
 const createConnection = async () => {
-    try {
-        console.log('Attempting to connect to the database...');
-        const conn = mongoose.createConnection(url, options);
-        await conn;
-        console.log('Connection established');
-    } catch (err) {
-        console.error('Connection Not Established:', err);
-    }
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("Connected to MongoDB");
+  } catch (err) {
+    console.error("Error connecting to MongoDB", err.message);
+  }
 };
-module.exports = { createConnection };
+
+module.exports =  createConnection;
