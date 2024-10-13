@@ -4,8 +4,12 @@ const mongoose = require("mongoose");
 const blogSchema = mongoose.Schema({
   title: { type: String, required: true, unique: true },
   description: { type: String, required: true },
+  img:
+  {
+      data: Buffer,
+      contentType: String
+  }
 });
-
 
 // Create the model from the schema
 const Blog = mongoose.model("Blog", blogSchema);

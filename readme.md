@@ -1,4 +1,5 @@
 Remaining Features
+Multer is nodejs middleware used for uploading files.
 frontend ejs development for blog (
     list all blogs 
     insert blogs 
