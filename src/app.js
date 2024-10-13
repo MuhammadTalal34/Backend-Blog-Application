@@ -1,13 +1,20 @@
 const express = require("express");
 const path = require("path");
-const securityMiddleware = require("./middlewares/security");
+const helmets = require("./middlewares/security");
 const registerRouter = require("./routes/register");
 const blogRouter = require("./routes/blog");
-
+const cors = require('cors')
 const app = express();
+const compression = require('compression')
 
-// Apply security middleware
-app.use(securityMiddleware);
+//  HELMET
+// Help secure Express apps by setting HTTP response headers.
+app.use(helmets);
+// Compress body response 
+app.use(compression());
+// For Blocking Request To Different Domain
+app.use(cors()) //cross-origin-resource-sharing
+
 
 // Set view engine
 app.set("views", path.join(__dirname, "views"));

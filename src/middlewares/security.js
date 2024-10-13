@@ -1,7 +1,6 @@
 const helmet = require("helmet");
+const express = require('express')
+const helmets = express()
+helmets.use(helmet());
 
-const securityMiddleware = (app) => {
-  app.use(helmet());
-};
-
-module.exports = securityMiddleware;
+module.exports = helmets;

@@ -6,14 +6,6 @@ const blogSchema = mongoose.Schema({
   description: { type: String, required: true },
 });
 
-// Handle duplicate username error
-blogSchema.post("save", function (error, doc, next) {
-  if (error.name === "MongoServerError" && error.code === 11000) {
-    next(new Error("Title already exists. Please choose another one."));
-  } else {
-    next();
-  }
-});
 
 // Create the model from the schema
 const Blog = mongoose.model("Blog", blogSchema);
