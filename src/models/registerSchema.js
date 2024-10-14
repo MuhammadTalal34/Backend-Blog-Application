@@ -9,7 +9,7 @@ const registerSchema = mongoose.Schema({
     type: Boolean, 
     default: false // Default value is false
   }
-});
+}, { timestamps: true });
 
 // Handle duplicate username error
 registerSchema.post('save', function(error, doc, next) {

@@ -1,15 +1,19 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose; // Ensure you import Schema
 
 // Define the schema for registering a user
-const blogSchema = mongoose.Schema({
-  title: { type: String, required: true, unique: true },
-  description: { type: String, required: true },
-  img:
+const blogSchema = new Schema(
   {
+    title: { type: String, required: true, unique: true },
+    description: { type: String, required: true },
+    img: {
       data: Buffer,
-      contentType: String
-  }
-});
+      contentType: String,
+    },
+    createdBy: { type: Schema.Types.ObjectId, ref: "User", required: true }, // Ensure this refers to your User model
+  },
+  { timestamps: true }
+);
 
 // Create the model from the schema
 const Blog = mongoose.model("Blog", blogSchema);
